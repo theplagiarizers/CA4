@@ -17,7 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Switch to frontend
+      - name: Display Frontend Directory
         working-directory: ${{env.frontend-directory}}
         run: ls -R
         
@@ -28,6 +28,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build the Docker image
+        working-directory: ${{env.frontend-directory}}
         run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/ca4:latest
 
       - name: Push Docker image
