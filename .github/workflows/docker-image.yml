@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main", "i200410"]
   pull_request:
-    branches: [ "main", "i200410" ]
+    branches: [ "main", "i200410"]
 
 jobs:
 
