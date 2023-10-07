@@ -1,0 +1,24 @@
+# Dependency directories
+/node_modules
+
+# Build files
+/build
+/dist
+
+# Environment variables
+.env
+
+# IDE and editor files
+/.idea
+/.vscode
+
+# Logs
+/logs
+
+# Cache and temporary files
+/.cache
+/.temp
+
+# Miscellaneous
+.DS_Store
+*.log
