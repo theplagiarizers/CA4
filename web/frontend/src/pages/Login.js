@@ -1,37 +1,24 @@
 import React, { useState } from 'react';
-import fetch from 'node-fetch'; // Import fetch
+import axios from 'axios';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
-    console.log("Login");
     e.preventDefault();
-    
+
     try {
-      const response = await fetch('http://web:8000/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: username,
-          password: password
-        })
+      const response = await axios.post('http://web:8000/login', {
+        name: username,
+        password: password
       });
-  
-      if (response.ok) {
-        const data = await response.json();
-        // Handle success response from the server
-        console.log(data);
-      } else {
-        // Handle error response from the server
-        console.log('Error:', response.statusText);
-      }
+
+      // Handle success response from the server
+      console.log(response.data);
     } catch (error) {
-      // Handle network or other errors
-      console.error('Error:', error);
+      // Handle error response from the server
+      console.error('Error:', error.message);
     }
   };
 

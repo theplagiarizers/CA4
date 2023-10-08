@@ -17,3 +17,14 @@ Instructions to build and run the web service:
 3. Visit the main page of the website after image is running
    `Visit localhost:3500`
 
+
+Optimizations:
+
+- We used .gitignore and .dockerignore to ignore the files that were not needed in the docker image. 
+   This helped us reduce the size of the image and also helped us to avoid any unnecessary files to be copied into the image.
+
+Unfortunately, we weren't able to connect react with the backend server. I am not sure why, our attempt code is available in Login.js (inside the src folder of the react app). However we tested the backend server independently, and confirmed that it is able to connect with the db. 
+
+Logging in using the login endpoint: 
+<img width="1440" alt="Screenshot 2021-05-17 at 12 38 38 AM" src="https://i.imgur.com/ZBaPsGx.png">
+
