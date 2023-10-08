@@ -29,14 +29,14 @@ jobs:
 
       - name: Build the backend and frontend Docker image
         working-directory: ./web
-        run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/ca4:latest
+        run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/ca4-web:latest
 
       - name: Push Docker image
         run: |
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/ca4-web:latest
           
-      - name: Build the backend and frontend Docker image
+      - name: Build DB Docker image
         working-directory: ./db
         run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/ca4-db:latest
 
