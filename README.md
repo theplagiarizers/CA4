@@ -15,7 +15,7 @@ Instructions to build and run the web service:
 2. Run the docker image
    `docker-compose up`
 3. Visit the main page of the website after image is running
-   `Visit localhost:3500`
+   `http://localhost:3500`
 
 
 Optimizations:
