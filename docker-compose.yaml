@@ -3,9 +3,9 @@ services:
   web:
     build: ./web
     ports:
-      - "8000:8000" #For backend server (express)
-      - "3000:3000" #For frontend
+      - "8500:8000" #For backend server (express)
+      - "3500:3000" #For frontend
   db:
     build: ./db
     ports:
-      - "5000:5000" #For MySQL
+      - "5500:5000" #For MySQL

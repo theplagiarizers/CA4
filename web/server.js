@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const path = require('path');
 // Middleware
 app.use(bodyParser.json());
@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 const dbConfig = {
   host: 'db', // MySQL container hostname
   user: 'myuser',
-  port: '5000',
+  port: '3306',
   password: 'mypassword',
   database: 'mydatabase'
 };
@@ -44,8 +44,8 @@ app.post('/register', (req, res) => {
       });
     } else {
       // Execute the MySQL query to insert the data
-      const query = 'INSERT INTO users (UserName, email, password, NOTES) VALUES (?, ?, ?, ?)';
-      connection.query(query, [name, email, password, "Initial Note"], (error, results) => {
+      const query = 'INSERT INTO your_table (UserName, NOTES, email, password) VALUES (?, ?, ?, ?);';
+      connection.query(query, [name, "Initial Note", email, password], (error, results) => {
         connection.release(); // Release the connection back to the pool
 
         if (error) {
