@@ -5,3 +5,7 @@ services:
     ports:
       - "8000:8000" #For backend server (express)
       - "3000:3000" #For frontend
+  db:
+    build: ./db
+    ports:
+      - "5000:5000" #For MySQL

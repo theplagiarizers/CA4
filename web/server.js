@@ -8,28 +8,31 @@ app.use(bodyParser.json());
 
 // MySQL database configuration
 const dbConfig = {
-  host: 'app-mysql', // MySQL container hostname
-  user: 'root',
-  port:'3306',
-  password: 'root',
-  database: 'nodeDB'
+  host: 'db', // MySQL container hostname
+  user: 'myuser',
+  port: '5000',
+  password: 'mypassword',
+  database: 'mydatabase'
 };
 
 // Create MySQL connection pool
 const pool = mysql.createPool(dbConfig);
-const parentDir = path.join(__dirname, '..');
+const parentDir = path.dirname(__dirname);
 // Specify the file path relative to the parent directory
-const filePath = path.join(parentDir, 'web', 'frontend', "src", 'index.js');
+const filePath = path.join('app', 'web', 'frontend', "src", 'index.js');
 
 app.get('/', function(req, res) {
+  // Print current working directory on browser
+  res.send(`Current working directory: ${__dirname}`);
   res.sendFile(filePath, {});
 });
 
 // Process the form data
-app.post('/process', (req, res) => {
+app.post('/register', (req, res) => {
   const name = req.body.name;
+  const password = req.body.password;
   const email = req.body.email;
-  console.log(`POST request received`);
+  console.log(`User registration request received`);
 
   // Create a MySQL connection from the pool
   pool.getConnection((err, connection) => {
@@ -41,8 +44,8 @@ app.post('/process', (req, res) => {
       });
     } else {
       // Execute the MySQL query to insert the data
-      const query = 'INSERT INTO your_table (name, email) VALUES (?, ?)';
-      connection.query(query, [name, email], (error, results) => {
+      const query = 'INSERT INTO users (UserName, email, password, NOTES) VALUES (?, ?, ?, ?)';
+      connection.query(query, [name, email, password, "Initial Note"], (error, results) => {
         connection.release(); // Release the connection back to the pool
 
         if (error) {
