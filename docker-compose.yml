@@ -1,28 +1,11 @@
-version: '3.8'
-
+version: '3'
 services:
-
-    db:
-      image: "mysql:latest"
-      container_name: CA4-db
-      volumes:
-        - my-db:/var/lib/mysql/data
-      ports:
-        - 5432:5432
-      environment:
-          - MYSQL_USER: user
-          - MYSQL_ROOT_PASSWORD: root
-          - MYSQL_PASSWORD: root
-          - MYSQL_DATABASE: testdb
-
-   #TBD
-    CA4-app:
-      build: ./TBD
-      container_name: kanban-app
-      environment:
-        - DB_SERVER=CA4-db
-      ports:
-        - 8080:8080
-      links:
-        - CA4-db
-    
+  web:
+    build: ./web
+    ports:
+      - "8500:8000" #For backend server (express)
+      - "3500:3000" #For frontend
+  db:
+    build: ./db
+    ports:
+      - "5500:5000" #For MySQL
