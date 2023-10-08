@@ -9,7 +9,7 @@ Zubair Fawad - 20I-1755 (Member 3) <br>
 
 Instructions to build and run the web service:
 
-1. Download the image from dockerhub:
+1. Download the image from dockerhub:<br>
   `docker pull theplagiarizers/ca4-web` <br>
   `docker pull theplagiarizers/ca4-db`
 2. Run the docker image
