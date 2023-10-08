@@ -59,12 +59,61 @@ app.post('/register', (req, res) => {
             status: 'success',
             message: 'Data stored successfully!'
           });
+          //Print user stored successfully
+          console.log(`User ${name} stored successfully!`);
         }
       });
     }
   });
 });
 
+app.post('/login', (req, res) => {
+  const name = req.body.name;
+  const password = req.body.password;
+  console.log(`User login request received`);
+
+  // Create a MySQL connection from the pool
+  pool.getConnection((err, connection) => {
+    if (err) {
+      console.error('Error getting MySQL connection:', err);
+      res.status(500).json({
+        status: 'error',
+        message: 'Internal Server Error'
+      });
+    } else {
+      // Execute the MySQL query to insert the data
+      const query = 'SELECT * FROM your_table WHERE UserName = ? AND password = ?;';
+      connection.query(query, [name, password], (error, results) => {
+        connection.release(); // Release the connection back to the pool
+
+        if (error) {
+          console.error('Error executing MySQL query:', error);
+          res.status(500).json({
+            status: 'error',
+            message: 'Internal Server Error'
+          });
+        } else {
+          // Check if the user exists
+          if (results.length > 0) {
+            res.status(200).json({
+              status: 'success',
+              message: 'User logged in successfully!'
+            });
+            //Print user logged in successfully
+            console.log(`User ${name} logged in successfully!`);
+          } else {
+            res.status(200).json({
+              status: 'error',
+              message: 'Invalid username or password!'
+            });
+            //Print invalid username or password
+            console.log(`Invalid username or password!`);
+          }
+        }
+      });
+    }
+  });
+});
 // Start the server
 const port = 8000;
 app.listen(port, () => {
