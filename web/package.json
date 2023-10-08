@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This is backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-backend": "node server.js",
+    "start-frontend": "cd frontend && react-scripts start",
+    "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
+    "build": "cd frontend && react-scripts build",
+    "eject": "cd frontend && react-scripts eject"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "concurrently": "^8.2.1",
+    "express": "^4.18.2",
+    "install": "^0.13.0",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
+    "react-scripts": "^5.0.1"
+  }
+}
