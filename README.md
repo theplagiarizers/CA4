@@ -10,9 +10,10 @@ Zubair Fawad - 20I-1755 (Member 3) <br>
 Instructions to build and run the web service:
 
 1. Download the image from dockerhub:
-  `docker pull theplagiarizers/ca4`
+  `docker pull theplagiarizers/ca4-web` <br>
+  `docker pull theplagiarizers/ca4-db`
 2. Run the docker image
-   `docker run -p 3000:3000 theplagiarizers/ca4`
+   `docker-compose up`
 3. Visit the main page of the website after image is running
-   `Visit localhost:3000`
+   `Visit localhost:3500`
 
