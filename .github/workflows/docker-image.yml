@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Set up Docker Compose
-        uses: docker/compose-action@v2
+        uses: isbang/compose-action@v1.5.1
         with:
           compose-file: docker-compose.yml
 
