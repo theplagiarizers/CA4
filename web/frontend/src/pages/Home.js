@@ -10,10 +10,17 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Your Notes</h1>
-      {notes.map(note => (
-        <Note key={note.id} title={note.title} content={note.content} />
-      ))}
+      <nav className="navbar">
+        <h1>Note Taking App</h1>
+        <button className="logout-button">Logout</button>
+      </nav>
+
+      <div className="container">
+        <h1>Your Notes</h1>
+        {notes.map((note) => (
+          <Note key={note.id} title={note.title} content={note.content} />
+        ))}
+      </div>
     </div>
   );
 };
